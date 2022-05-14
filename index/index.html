@@ -1,65 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link href="../css/tx-colors.css" rel="stylesheet">
-    <link href="../css/bg-colors.css" rel="stylesheet">
+    <link href='../css/bootstrap.min.css' rel='stylesheet'>
+    <link href="../css/tx-collors.css" rel="stylesheet">
+    <link href="../css/bg-collors.css" rel="stylesheet">
 
     <title>Pokedex</title>
-    <style>
 
-    </style>
 </head>
 <body>
-<nav class="navbar navbar-light bg-vermelho">
+<nav class="navbar bg-vermelho text-white">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1 text-white">Pokedex</span>
+        <span class="navbar-brand mb-0 h1">PokeDex</span>
     </div>
 </nav>
 
-<div class="container">
-    <div class="row mt-1">
-
-        <div class="col-md">
-            <button class="btn bg-secondary w-100 text-white" ><</button>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-2">
+            <a href="#" class="btn bg-vermelho text-white" style="border-radius: 25px"> < </a>
 
         </div>
-        <div class="col-md">
-            <button class="btn bg-secondary w-100 text-white" >> </button>
+        <div class="col-2 text-end">
+            <a href="#" class="btn bg-vermelho text-white h1" style="border-radius: 25px"> > </a>
+
+        </div>
+        <div class="col">
+            <input class="form-control me-2" type="search" placeholder="Digite um nome de pokemon" aria-label="Search">
 
         </div>
     </div>
-
-
-    <div class="row mt-4">
+    <div class="row mt-2">
         <div class="col-md-4">
-            <div class="card w-100" style=" border-radius: 30px">
-                <h5 class="card-title text-center mt-3">Bulbasauro</h5>
+            <div class="card w-100" style="border-radius: 25px">
+                <h5 class="card-title text-center mt-1">Bulbassauro</h5>
 
-                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
-                     class="card-img-top bg-light" alt="..." >
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" class="card-img-top bg-cinza-claro" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        Uma breve descrição sobre o pokemon</p>
+                    <a href="#" class="btn bg-verde text-white" style="border-radius: 25px">Grass</a>
+                    <a href="#" class="btn bg-roxo text-white" style="border-radius: 25px">Poison</a>
 
-
-                <div class="row p-3 pb-2">
-                    <div class="col-md p-1">
-                        <button class="btn bg-success w-100 text-white" style="border-radius: 30px">Grama</button>
-
-                    </div>
-                    <div class="col-md p-1">
-                        <button class="btn bg-roxo w-100 text-white" style="border-radius: 30px">Poison</button>
-
-                    </div>
                 </div>
-
-
             </div>
         </div>
         <div class="col-md-8">
+
             <table class="table">
                 <thead>
                 <tr>
@@ -91,10 +82,11 @@
             </table>
         </div>
     </div>
+
 </div>
 
-<script src="../js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+<script src="../tools/jquery-3.6.0.js"></script>
+<script src="requestPokemon.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
