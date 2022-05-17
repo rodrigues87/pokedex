@@ -1,4 +1,4 @@
-const idInicial = 4;
+const idInicial = 1;
 const idAnterior = idInicial - 1;
 const idPosterior = idInicial + 1;
 
@@ -50,3 +50,12 @@ function atualizarConteudoDaPagina(response) {
     tipo1Pokemon.textContent = response.types[0].type.name;
     tipo2Pokemon.textContent = response.types[1].type.name;
 }
+
+function  irParaPokemonPosterior(){
+    console.log("foi para o pokemon posterior")
+
+}
+function irParaPokemonAnterior(){
+    console.log("foi para o pokemon anterior")
+}
+
