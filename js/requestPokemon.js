@@ -1,11 +1,9 @@
-const idInicial = 1;
-const idAnterior = idInicial - 1;
-const idPosterior = idInicial + 1;
-
+this.idPokemon = 1;
+this.idUltimoPokemon = 898;
 
 identificarObjetosDaPagina();
 
-findPokemonById(idInicial);
+findPokemonById(idPokemon);
 
 function identificarObjetosDaPagina() {
     this.nomePokemonObject = document.getElementById("nomePokemon")
@@ -37,7 +35,7 @@ function findPokemonById(id) {
 function atualizarConteudoDaPagina(response) {
     nomePokemonObject.textContent = response.name;
     imagemPokemonObject.src =
-        "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00"+idInicial+".png"
+        "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00"+idPokemon+".png"
 
     altura.textContent = parseInt(response.height)/10;
     hp.textContent = response.stats[0].base_stat;
@@ -52,10 +50,19 @@ function atualizarConteudoDaPagina(response) {
 }
 
 function  irParaPokemonPosterior(){
-    console.log("foi para o pokemon posterior")
+    idPokemon = idPokemon +1;
+    if(idPokemon >= idUltimoPokemon){
+        idPokemon = 1;
+    }
+    findPokemonById(idPokemon);
 
 }
 function irParaPokemonAnterior(){
-    console.log("foi para o pokemon anterior")
+   idPokemon = idPokemon -1;
+   if (idPokemon === 0){
+       idPokemon = idUltimoPokemon;
+   }
+   findPokemonById(idPokemon);
+
 }
 
