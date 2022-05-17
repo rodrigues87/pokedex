@@ -1,6 +1,6 @@
-const idInicial = 1;
-const idAnterior = idInicial - 1;
-const idPosterior = idInicial + 1;
+this.idInicial = 1;
+this.idFinal = 898;
+
 
 
 identificarObjetosDaPagina();
@@ -35,7 +35,7 @@ function findPokemonById(id) {
 }
 
 function atualizarConteudoDaPagina(response) {
-    nomePokemonObject.textContent = response.name;
+    nomePokemonObject.textContent = capitalizeFirstLetter(response.name);
     imagemPokemonObject.src =
         "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00"+idInicial+".png"
 
@@ -47,15 +47,50 @@ function atualizarConteudoDaPagina(response) {
     defesaEspecial.textContent = response.stats[4].base_stat;
     speed.textContent = response.stats[5].base_stat;
 
+    atualizarFundoImagemPokemon(response)
+
     tipo1Pokemon.textContent = response.types[0].type.name;
     tipo2Pokemon.textContent = response.types[1].type.name;
 }
 
+function atualizarFundoImagemPokemon(response){
+    let tipo = response.types[0].type.name;
+    if(tipo === "grass"){
+
+        this.imagemPokemonObject.className = "bg-verde"
+    }
+    if(tipo === "fire"){
+        this.imagemPokemonObject.className = "bg-vermelho"
+    }
+    if(tipo === "water"){
+        this.imagemPokemonObject.className = "bg-azul"
+    }
+}
+
 function  irParaPokemonPosterior(){
-    console.log("foi para o pokemon posterior")
+
+    idInicial = idInicial +1;
+
+    if(idInicial >= idFinal){
+        idInicial = 1;
+    }
+
+    findPokemonById(idInicial)
 
 }
+
 function irParaPokemonAnterior(){
-    console.log("foi para o pokemon anterior")
+
+    idInicial = idInicial -1;
+
+    if(idInicial === 0){
+        idInicial = idFinal;
+    }
+
+    findPokemonById(idInicial)
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
