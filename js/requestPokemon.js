@@ -32,8 +32,6 @@ function findPokemonById(id) {
     });
 }
 
-
-
 function atualizarConteudoDaPagina(response) {
     nomePokemonObject.textContent = capitalizeFirstLetter(response.name);
     let valorImagem = prepararValorDaImagem(idPokemon);
