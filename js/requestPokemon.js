@@ -95,7 +95,7 @@ function definirTiposDoPokemon(response) {
     }
 }
 
-function  irParaPokemonPosterior(){
+function irParaPokemonPosterior(){
     idPokemon = idPokemon +1;
     if(idPokemon >= idUltimoPokemon){
         idPokemon = 1;
@@ -103,7 +103,6 @@ function  irParaPokemonPosterior(){
     findPokemon(idPokemon);
 
 }
-
 
 function irParaPokemonAnterior(){
    idPokemon = idPokemon -1;
