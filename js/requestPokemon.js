@@ -32,10 +32,13 @@ function findPokemonById(id) {
     });
 }
 
+
+
 function atualizarConteudoDaPagina(response) {
-    nomePokemonObject.textContent = response.name;
+    nomePokemonObject.textContent = capitalizeFirstLetter(response.name);
+    let valorImagem = prepararValorDaImagem(idPokemon);
     imagemPokemonObject.src =
-        "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00"+idPokemon+".png"
+        "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+valorImagem+".png"
 
     altura.textContent = parseInt(response.height)/10;
     hp.textContent = response.stats[0].base_stat;
@@ -45,8 +48,49 @@ function atualizarConteudoDaPagina(response) {
     defesaEspecial.textContent = response.stats[4].base_stat;
     speed.textContent = response.stats[5].base_stat;
 
-    tipo1Pokemon.textContent = response.types[0].type.name;
-    tipo2Pokemon.textContent = response.types[1].type.name;
+    definirTiposDoPokemon(response);
+
+    modificarFundoTipo(response,tipo1Pokemon,0);
+    modificarFundoTipo(response,tipo2Pokemon,1);
+
+}
+
+function modificarFundoTipo(response, tipoPokemonButton,id) {
+    if(response.types[id].type.name === "grass" || response.types[id].type.name === "bug" ){
+        tipoPokemonButton.className = "btn bg-verde text-white";
+    }
+    if(response.types[id].type.name === "fire"){
+        tipoPokemonButton.className = "btn bg-vermelho text-white";
+    }
+    if(response.types[id].type.name === "water"){
+        tipoPokemonButton.className = "btn bg-azul text-white";
+    }
+    if(response.types[id].type.name === "normal"){
+        tipoPokemonButton.className = "btn bg-cinza text-white";
+    }
+    if(response.types[id].type.name === "poison"){
+        tipoPokemonButton.className = "btn bg-roxo text-white";
+    }
+    if(response.types[id].type.name === "electric" || response.types[0].type.name === "ground"){
+        tipoPokemonButton.className = "btn bg-amarelo text-white";
+    }
+    if(response.types[id].type.name === "fairy"){
+        tipoPokemonButton.className = "btn bg-roxo-claro text-white";
+    }
+
+}
+
+function definirTiposDoPokemon(response) {
+    if(response.types.length ===1){
+        tipo1Pokemon.textContent = response.types[0].type.name;
+        tipo2Pokemon.hidden = true;
+    }
+    if(response.types.length ===2){
+        tipo2Pokemon.hidden = false;
+
+        tipo1Pokemon.textContent = response.types[0].type.name;
+        tipo2Pokemon.textContent = response.types[1].type.name;
+    }
 }
 
 function  irParaPokemonPosterior(){
@@ -57,6 +101,7 @@ function  irParaPokemonPosterior(){
     findPokemonById(idPokemon);
 
 }
+
 function irParaPokemonAnterior(){
    idPokemon = idPokemon -1;
    if (idPokemon === 0){
@@ -64,5 +109,22 @@ function irParaPokemonAnterior(){
    }
    findPokemonById(idPokemon);
 
+}
+
+function prepararValorDaImagem(valorImagem){
+
+    valorImagem = valorImagem.toString()
+
+    if(valorImagem.length ===1 ){
+        return "00"+ valorImagem;
+    }
+    if(valorImagem.length ===2 ){
+        return "0"+ valorImagem;
+    }
+    return valorImagem
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
