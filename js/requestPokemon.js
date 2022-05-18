@@ -3,7 +3,7 @@ this.idUltimoPokemon = 898;
 
 identificarObjetosDaPagina();
 
-findPokemonById(idPokemon);
+findPokemon(idPokemon);
 
 function identificarObjetosDaPagina() {
     this.nomePokemonObject = document.getElementById("nomePokemon")
@@ -19,9 +19,10 @@ function identificarObjetosDaPagina() {
     this.speed = document.getElementById("speed")
 }
 
-function findPokemonById(id) {
+function findPokemon(nameOrId) {
+
     var settings = {
-        "url": "https://pokeapi.co/api/v2/pokemon/"+id,
+        "url": "https://pokeapi.co/api/v2/pokemon/"+nameOrId,
         "method": "GET",
         "timeout": 0,
     };
@@ -33,8 +34,11 @@ function findPokemonById(id) {
 }
 
 function atualizarConteudoDaPagina(response) {
+
     nomePokemonObject.textContent = capitalizeFirstLetter(response.name);
-    let valorImagem = prepararValorDaImagem(idPokemon);
+    let valorImagem = prepararValorDaImagem(response.id);
+    console.log(valorImagem)
+
     imagemPokemonObject.src =
         "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+valorImagem+".png"
 
@@ -96,16 +100,17 @@ function  irParaPokemonPosterior(){
     if(idPokemon >= idUltimoPokemon){
         idPokemon = 1;
     }
-    findPokemonById(idPokemon);
+    findPokemon(idPokemon);
 
 }
+
 
 function irParaPokemonAnterior(){
    idPokemon = idPokemon -1;
    if (idPokemon === 0){
        idPokemon = idUltimoPokemon;
    }
-   findPokemonById(idPokemon);
+   findPokemon(idPokemon);
 
 }
 
