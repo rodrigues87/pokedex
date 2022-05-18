@@ -76,9 +76,13 @@ function modificarFundoTipo(response, tipoPokemonButton,id) {
     if(response.types[id].type.name === "electric" || response.types[0].type.name === "ground"){
         tipoPokemonButton.className = "btn bg-amarelo text-white";
     }
-    if(response.types[id].type.name === "fairy"){
+    if(response.types[id].type.name === "fairy" || response.types[id].type.name === "psychic"){
         tipoPokemonButton.className = "btn bg-roxo-claro text-white";
     }
+    if(response.types[id].type.name === "dark"){
+        tipoPokemonButton.className = "btn bg-cinza-escuro text-white";
+    }
+
 
 }
 
