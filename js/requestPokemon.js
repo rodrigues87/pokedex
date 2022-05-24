@@ -17,6 +17,8 @@ function identificarObjetosDaPagina() {
     this.ataqueEspecial = document.getElementById("ataqueEspecial")
     this.defesaEspecial = document.getElementById("defesaEspecial")
     this.speed = document.getElementById("speed")
+    this.descricaoDoPokemon = document.getElementById("descricaoDoPokemon")
+
 }
 
 function findPokemon(nameOrId) {
@@ -32,6 +34,8 @@ function findPokemon(nameOrId) {
         console.log(response);
     });
 }
+
+
 
 function atualizarConteudoDaPagina(response) {
 
@@ -50,11 +54,19 @@ function atualizarConteudoDaPagina(response) {
     defesaEspecial.textContent = response.stats[4].base_stat;
     speed.textContent = response.stats[5].base_stat;
 
+    definirDescricaoDoPokemon(response);
+
     definirTiposDoPokemon(response);
 
     modificarFundoTipo(response,tipo1Pokemon,0);
     modificarFundoTipo(response,tipo2Pokemon,1);
 
+}
+
+function definirDescricaoDoPokemon(response) {
+    descricaoDoPokemon.textContent = "O " + response.name + " tem " +
+        parseInt(response.height)/10 + " metros de altura, e é um pokemon do tipo " +
+        response.types[0].type.name;
 }
 
 function modificarFundoTipo(response, tipoPokemonButton,id) {
